@@ -1,0 +1,36 @@
+1. 
+ans) Cookies are tiny packs of info that websites send to users’ browsers, enabling them to remember preferences and track habits. 
+Cookies in PHP play a crucial role in web development by enabling websites to store and retrieve information on a user’s device. These small pieces of data, sent from a web server and stored on the user’s browser, allow websites to remember user preferences, track sessions, and maintain state information.
+
+In PHP, cookies can be customized to suit specific needs, thanks to key attributes that provide control over their behavior.
+Cookies are text files that are saved on the client computer for the purpose of monitoring. PHP accepts HTTP cookies invisibly.
+Returning users are identified using a three-step process applied for cookies in PHP.
+
+A collection of cookies is sent to the browser by the server script. Name, age, or identification number, for example. 
+This information is saved on the local computer by the browser for future use.
+When the browser sends a request to the web server the next time, it sends those cookies information to the server, which the server uses to identify the user.
+All of the data in the cookie is automatically sent to the server each time the browser requests a page from the server.
+ey Cookie Attributes:
+
+Expires: This attribute sets the expiration date and time for a cookie. After this point, the cookie becomes invalid and is automatically deleted by the browser.
+Path: It defines the URL path for which the cookie is accessible. This attribute allows you to specify a directory or a part of the website where the cookie should be available.
+Domain: The “domain” attribute specifies the domain (e.g., example.com) for which the cookie is valid.
+Secure: When this attribute is set to true, ensures that the cookie is only transmitted over secure (HTTPS) connections.
+
+
+2. List and explain the different functions and their modes for writing into a file.
+ans) File functions in PHP provide a powerful set of tools for handling files and directories within web applications.
+These functions allow developers to create, read, write, delete, and manipulate files and directories, providing the ability to manage file-related operations seamlessly.
+PHP file functions support file system operations such as checking file existence, determining file size, setting file permissions, and working with file timestamps.
+These functions also facilitate file manipulation and analysis, including searching for specific patterns within files, extracting subsets of data, and manipulating file paths.
+Each function utilizes different modes to specify how you want to interact with the file when writing data:
+File Opening Modes:
+"w" (Write Only): Creates a new file for writing. If the file already exists, it is overwritten.
+"a" (Append Only): Opens a file for appending data to the end of its content.
+"r+" (Read/Write): Opens a file for both reading and writing. The file pointer is positioned at the beginning.
+"w+" (Write/Read): Creates a new file for writing and reading. If the file exists, it is overwritten.
+"a+" (Append/Read): Opens a file for appending data and reading. The file pointer is positioned at the end.
+"x" (Create New Only): Creates a new file for writing, but fails if the file already exists.
+
+3. state and explain various php specialized keywords.
+

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<title>Secure File Storage</title>
+<head>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+</head>
+
+<style>
+    body{
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 130px;
+      height: 55%;
+      text-align: center;
+      margin-left:auto;
+      margin-right:5%;
+/* Adjust this to move content a little to the left */
+      margin-bottom: 100px;
+}
+
+.video-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Ensures the video covers the entire area */
+  z-index: -1; /* Keeps the video in the background */
+  background-color: #f0f8ff; /* Light background color */
+}
+
+header {
+  color: whitesmoke;
+  padding: 20px 0;
+  text-align: right;
+}
+
+header .logo h1 {
+  margin: 0;
+  font-size: 2em;
+}
+
+p{
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  line-height: 1;
+  text-align: right;
+  direction: ltr;
+}
+
+.btn {
+  border: none;
+  border-radius: 0;
+  width: auto;
+  box-sizing: border-box;
+  padding: 2px 10px;
+  transition: all 0.6s;
+  color: #FFF;
+  font-size: 15px;
+  vertical-align: middle;
+  text-transform: uppercase;
+  margin-left: 1rem;
+}
+
+footer {
+      background-color: #333;
+      color: white;
+      text-align: center;
+      padding: 10px;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+    }
+
+.btn:hover{
+	box-shadow: 0 0 5px #33006e;
+}
+</style>
+<body>
+  <video class="video-background" autoplay loop muted>
+    <source src="{{ url_for('static', filename='videoplayback(2).mp4') }}" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+  <header>
+    <div class="logo">
+      <h1>CIPHER</h1>
+      <h2>Welcome To SecureFileStore ! <br><br></h2>
+      <p>At SecureFileStore, we prioritize your privacy and data protection.<br> Our innovative hybrid cryptography system
+        combines the strengths of both, <br>symmetric and asymmetric encryption algorithms, offering unparalleled security<br>
+        for your most sensitive files.
+      </p><br><br>
+<meta charset=utf-8>
+    <!-- </div>
+    <div id="email_v">
+     <h1>Validate your Email to Access the File</h1>
+    <form action="{{ url_for('validate_access') }}" method="POST">
+        <input type="email" name="email_v" placeholder="Enter your email" required>
+        <button type="submit">Validate</button>
+    </form>
+  </div> -->
+ <right>  
+<a href="/Result/" target="blank"><button class='btn btn-danger'>Encrypt!</button></a>
+<a href="/resultD/" target="blank"><button class='btn btn-danger'>Decrypt!</button></a>
+<a href="/login/" target="blank"><button class='btn btn-danger'>Logout!</button></a> 
+</right>
+</header>
+   
+<!-- Footer Section -->
+<footer>
+  <p>&copy; 2025 My Website. All Rights Reserved.</p>
+</footer>
+</body>
+<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
+</html>

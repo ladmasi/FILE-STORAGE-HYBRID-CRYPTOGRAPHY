@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Secure File Decryption</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background: url('../static/successful_encrypt.png');
+            color: rgb(248, 189, 100);
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+
+        .btn {
+            border: none;
+            border-radius: 0;
+            width: auto;
+            padding: 6px 15px;
+            transition: all 0.6s;
+            color: #FFF;
+            font-size: 15px;
+            text-transform: uppercase;
+            margin: 10px;
+        }
+
+        .btn:hover {
+            box-shadow: 0 0 5px #33006e;
+        }
+
+        .form-control {
+            max-width: 400px;
+            margin: auto;
+        }
+
+        .form-label {
+            font-weight: bold;
+        }
+
+        .container {
+            margin-top: 40px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container text-center">
+        <h1 class="mb-4">Decrypt Your Secure File</h1>
+
+        <!-- Upload encrypted file -->
+        <form action="/upload" method="POST" enctype="multipart/form-data" class="mb-4">
+            <label for="file" class="form-label">1. Select Encrypted File:</label>
+            <input type="file" name="file" class="form-control mb-2" required>
+            <button type="submit" class="btn btn-warning">Upload Encrypted File</button>
+        </form>
+
+        <!-- Validate email -->
+        <form action="/validate_access" method="POST" class="mb-4">
+            <label for="email" class="form-label">2. Enter Validated Email:</label>
+            <input type="email" name="email-d" class="form-control mb-2" placeholder="Enter email from access list" required>
+            <button type="submit" class="btn btn-info">Validate Email</button>
+        </form>
+
+        <!-- Upload decryption key -->
+        <div class="container mt-5">
+            <h1>Upload Key File</h1>
+        
+            <!-- Flash messages -->
+            {% with messages = get_flashed_messages(with_categories=true) %}
+              {% if messages %}
+                {% for category, msg in messages %}
+                  <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+                    {{ msg }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                  </div>
+                {% endfor %}
+              {% endif %}
+            {% endwith %}
+        
+            <!-- File upload form -->
+            <form method="POST" action="{{ url_for('upload_key') }}" enctype="multipart/form-data">
+              <div id="key_file" class="mb-3">
+                <label for="keyFile" class="form-label">Select Key File</label>
+                <input class="form-control" type="file" id="keyFile" name="key_file" accept=".key,.txt">
+                <div id="fileHelp" class="form-text">Allowed file types: .key, .txt</div>
+              </div>
+              <button type="submit" class="btn btn-primary">Upload Key</button>
+            </form>
+          </div>
+
+        <!-- Final decrypt + download -->
+        {% if session.get('email_verified') %}
+            <a href="{{ url_for('decrypt_and_merge') }}">
+                <button class="btn btn-danger">Decrypt & Merge</button>
+            </a>
+        {% else %}
+            <p class="text-light">* Validate email above to proceed with decryption.</p>
+            {% endif %}
+
+            <a href="{{ url_for('download') }}">
+                <button class="btn btn-primary">Download Decrypted File</button>
+            </a>
+    </div>
+</body>
+<!-- Bootstrap JS bundle -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"></script>
+
+</html>

@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login & Register</title>
+    <style>
+        body,
+        html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+        }
+
+        .video-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            /* Ensures the video covers the entire area */
+            z-index: -1;
+            /* Keeps the video in the background */
+            background-color: #f0f8ff;
+            /* Light background color */
+
+        }
+
+
+
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+
+        }
+
+        .container {
+            width: 300px;
+
+            padding: 20px;
+            border-radius: 8px;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+
+        }
+
+        input[type="text"],
+        input[type="password"],
+        input[type="email"] {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border-radius: 4px;
+
+        }
+
+        .btn {
+            width: 100%;
+            padding: 10px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: #0056b3;
+        }
+
+        .toggle-btn {
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        .toggle-btn a {
+            color: #007BFF;
+            text-decoration: none;
+        }
+
+        .toggle-btn a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+
+    <video class="video-background" autoplay loop muted>
+        <source src="{{ url_for('static', filename='videoplayback(1).mp4') }}" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+    {% if error %}
+    <div class="error-message" style="color: red; margin-bottom: 15px;">
+        {{ error }}
+    </div>
+    {% endif %}
+    {% if success %}
+    <div class="success-message" style="color: green; margin-bottom: 15px;">
+        {{ success }}
+    </div>
+    {% endif %}
+
+    <div class="container" id="login-form">
+        <!-- Login Form -->
+        <div id="login-form"></div>
+        <h2 style="color: aliceblue;">Login</h2>
+        <form action="{{ url_for('login') }}" method="POST">
+        <!-- <form action="/login" method="POST"></form> -->
+        <div class="form-group">
+            <label for="login-username">Username</label>
+            <input type="text" id="login-username" name="login-username" required>
+        </div>
+        <div class="form-group">
+            <label for="login-password">Password</label>
+            <input type="password" id="login-password" name="login-password" required>
+        </div>
+        <button type="submit" class="btn">Login</button>
+        </form>
+        <div class="toggle-btn">
+            <p>Don't have an account? <a href="javascript:void(0);" onclick="toggleForm('register')">Register</a></p>
+        </div>
+    </div>
+
+    <!-- Register Form -->
+    <div id="register-form" style="display: none;">
+        <h2>Register</h2>
+        <form action="{{ url_for('register') }}" method="POST">
+            <div class="form-group">
+                <label for="register-username">Username</label>
+                <input type="text" id="register-username" name="register-username" required>
+            </div>
+            <div class="form-group">
+                <label for="register-email">Email</label>
+                <input type="email" id="register-email" name="register-email" required>
+            </div>
+            <div class="form-group">
+                <label for="register-password">Password</label>
+                <input type="password" id="register-password" name="register-password" required>
+            </div>
+            <button type="submit" class="btn">Register</button>
+        </form>
+        <div class="toggle-btn">
+            <p>Already have an account? <a href="javascript:void(0);" onclick="toggleForm('login')">Login</a></p>
+        </div>
+    </div>
+
+    <script>
+
+        function toggleForm(form) {
+            if (form === 'login') {
+                document.getElementById('login-form').style.display = 'block';
+                document.getElementById('register-form').style.display = 'none';
+            } else if (form === 'register') {
+                document.getElementById('login-form').style.display = 'none';
+                document.getElementById('register-form').style.display = 'block';
+            }
+        }
+
+    </script>
+
+</body>
+
+</html>
